@@ -23,7 +23,7 @@
 
 /* eslint-disable max-len */
 
-//const applicationServerPublicKey = 'BLGg-EIIY1ul2aZInvDoSwTteSBXvfvJCDXjcDXwYiM-pcQqpigRIVLvtadb5YPbBSFnMzxr4rwKjCAyxbvaD30';
+const applicationServerPublicKey = 'BLGg-EIIY1ul2aZInvDoSwTteSBXvfvJCDXjcDXwYiM-pcQqpigRIVLvtadb5YPbBSFnMzxr4rwKjCAyxbvaD30';
 
 /* eslint-enable max-len */
 
@@ -49,11 +49,6 @@ self.addEventListener('push', function(event) {
   const title = 'Ar PWA';
   const options = {
     body: event.data.text(),
-    vibrate: [100, 50, 100],
-    data: {
-      dateOfArrival: Date.now(),
-      primaryKey: 1
-    },
     icon: 'images/track_and_field.png',
     badge: 'images/badge.png',
     actions: [
@@ -75,10 +70,9 @@ self.addEventListener('notificationclick', function(event) {
   );
 });
 
-/*
 self.addEventListener('pushsubscriptionchange', function(event) {
   console.log('[Service Worker]: \'pushsubscriptionchange\' event fired.');
-  //const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
+  const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
   event.waitUntil(
     self.registration.pushManager.subscribe({
       userVisibleOnly: true,
@@ -91,7 +85,7 @@ self.addEventListener('pushsubscriptionchange', function(event) {
   );
 });
 
-*/
+
 self.addEventListener('fetch', function(event){
 
 });
