@@ -28,6 +28,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles/bootstrap.min.css">
   <link rel="stylesheet" href="styles/index.css">
+
+  <style type="text/css">
+    .col-sm-4{
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
@@ -37,28 +43,39 @@
   </header>
 
 <div class="container"  style="margin-top: 10px;">
-  <div class="row">
+  <div class="row" >
     <button disabled class="js-push-btn btn btn-info">
         Send me some cute notifications
     </button>
   </div>
-  <div class="row">
-        <div class="col-sm-4">
+  <div class="row" style="margin-top:15px;">
+        <div class="col-sm-4 thumbnail">
             <img src="images/omusa.jpg" style="max-height: 200px;" />
+            <h2>Onur Musaoğlu</h2>
         </div>
-        <div class="col-sm-8">
-                <section class="subscription-details js-subscription-details is-invisible">
-                    <p>Once you've subscribed your user, you'd send their subscription to your
-                    server to store in a database so that when you want to send a message
-                    you can lookup the subscription and send a message to it.</p>
-                    <p>To simplify things for this code lab copy the following details
-                    into the <a href="https://web-push-codelab.glitch.me/">Push Companion
-                    Site</a> and it'll send a push message for you, using the application
-                    server keys on the site - so make sure they match.</p>
-                    <pre><code class="js-subscription-json"></code></pre>
-                </section>
+        <div class="col-sm-4 thumbnail">
+            <img src="images/oguz.jpg" style="max-height: 200px;" />
+            <h2>Oğuzhan Özacun</h2>
         </div>
+        <div class="col-sm-4 thumbnail">
+            <img src="images/didem.jpg" style="max-height: 200px;" />
+            <h2>Didem Tabakoğlu</h2> 
+        </div>
+
+        
   </div>
+  <div class="row">
+            <section class="subscription-details js-subscription-details is-invisible">
+                <p>Once you've subscribed your user, you'd send their subscription to your
+                server to store in a database so that when you want to send a message
+                you can lookup the subscription and send a message to it.</p>
+                <p>To simplify things for this code lab copy the following details
+                into the <a href="https://web-push-codelab.glitch.me/">Push Companion
+                Site</a> and it'll send a push message for you, using the application
+                server keys on the site - so make sure they match.</p>
+                <pre><code class="js-subscription-json"></code></pre>
+            </section>
+    </div>
 </div> 
 
   <script src="scripts/main.js"></script>

@@ -23,7 +23,7 @@
 
 /* eslint-disable max-len */
 
-const applicationServerPublicKey = 'BFE0Divv13eQn4CmmzXcXn-RSWXi6BkhSVTg64NX9lso_UWPbij7B3ZZ55ICbynUvvadj231ZcRvV-gYCnmwsls';
+const applicationServerPublicKey = 'BLGg-EIIY1ul2aZInvDoSwTteSBXvfvJCDXjcDXwYiM-pcQqpigRIVLvtadb5YPbBSFnMzxr4rwKjCAyxbvaD30';
 
 /* eslint-enable max-len */
 
@@ -66,7 +66,7 @@ self.addEventListener('notificationclick', function(event) {
   event.notification.close();
 
   event.waitUntil(
-    clients.openWindow('https://www.arcelik.com.tr/')
+    clients.openWindow('https://partnercomm-test.arcelik.com/CustomerPortalUI/')
   );
 });
 
