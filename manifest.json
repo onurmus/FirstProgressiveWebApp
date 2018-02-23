@@ -2,7 +2,7 @@
   "name": "ArPWA",
   "short_name": "ArPWA",
   "start_url": "index.html?launcher=true",
-  "display": "standalone",
+  "display": "fullscreen",
   "background_color": "#2196F3",
   "description": "Ar First PWA",
   "icons": [{
