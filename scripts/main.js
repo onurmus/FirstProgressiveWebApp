@@ -6,7 +6,7 @@ function saveSubscriptionID(subscription) {
     var subscription_id = JSON.stringify(subscription);
     console.log("Subscription ID", subscription_id);
 
-    fetch('https://12502a89.ngrok.io/api/users', {
+    fetch('https://d966ccb1.ngrok.io/api/users', {
       method: 'post',
       headers: {
         'Accept': 'application/json',
@@ -19,7 +19,7 @@ function saveSubscriptionID(subscription) {
 function deleteSubscriptionID(subscription) {
     //var subscription_id = subscription.endpoint.split('gcm/send/')[1];
     var subscription_id = JSON.stringify(subscription);
-    fetch('https://12502a89.ngrok.io/api/user', {
+    fetch('https://d966ccb1.ngrok.io/api/user', {
       method: 'post',
       headers: {
         'Accept': 'application/json',

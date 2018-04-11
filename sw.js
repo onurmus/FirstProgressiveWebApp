@@ -55,11 +55,7 @@ self.addEventListener('push', function(event) {
       primaryKey: 1
     },
     icon: 'images/track_and_field.png',
-    badge: 'images/badge.png',
-    actions: [
-    { "action": "yes", "title": "Yes", "icon": "images/yes.png" },
-    { "action": "no", "title": "No", "icon": "images/no.png" }
-  ]
+    image: 'images/5star.png'
   };
 
   event.waitUntil(self.registration.showNotification(title, options));
@@ -67,11 +63,12 @@ self.addEventListener('push', function(event) {
 
 self.addEventListener('notificationclick', function(event) {
   console.log('[Service Worker] Notification click Received.');
+  console.log('You select: ', event.action);
 
   event.notification.close();
 
   event.waitUntil(
-    clients.openWindow('https://partnercomm-test.arcelik.com/CustomerPortalUI/')
+    clients.openWindow('http://survey.arcelik.com/NPS/Arcelik/1.html?Guid=AC3A118A-AFFF-4712-B9DF-65C6E50AB265')
   );
 });
 
