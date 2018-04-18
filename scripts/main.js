@@ -1,31 +1,62 @@
 'use strict';
 
 
-function saveSubscriptionID(subscription) {
+function getNameFromSubscriptionID(subscription) {
     //var subscription_id = subscription.endpoint.split('gcm/send/')[1];
     var subscription_id = JSON.stringify(subscription);
-    console.log("Subscription ID", subscription_id);
 
-    fetch('https://d966ccb1.ngrok.io/api/users', {
+    fetch('https://arnotificationsender20180418102257.azurewebsites.net/Notification/GetUserNameByGcm', {
       method: 'post',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ user_id : subscription_id })
+      body: JSON.stringify({ GcmId : subscription_id})
+    }).then(function(response) {
+      console.log(response);
+      response.json().then(function(data) {
+        document.getElementById("userId").value =data;
+        document.getElementById("userId").disabled = true;
+      });
+      return ;
     });
+
+}
+
+
+function saveSubscriptionID(subscription) {
+    //var subscription_id = subscription.endpoint.split('gcm/send/')[1];
+    var subscription_id = JSON.stringify(subscription);
+    var user_id =document.getElementById("userId").value;
+
+    if(user_id.trim() == ""){
+      alert("Please Enter User Name!")
+      return false;
+    }else{
+      user_id = JSON.stringify(user_id);
+      fetch('https://arnotificationsender20180418102257.azurewebsites.net/Notification/AddNewNotifUser', {
+        method: 'post',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ GcmId : subscription_id, UserId: user_id })
+      });""
+      return  true;
+    }
 }
 
 function deleteSubscriptionID(subscription) {
     //var subscription_id = subscription.endpoint.split('gcm/send/')[1];
     var subscription_id = JSON.stringify(subscription);
-    fetch('https://d966ccb1.ngrok.io/api/user', {
+    var user_id = JSON.stringify(document.getElementById("userId").value);
+    fetch('https://arnotificationsender20180418102257.azurewebsites.net/Notification/DeleteNotifUser', {
       method: 'post',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ user_id : subscription_id })
+      body: JSON.stringify({ GcmId : subscription_id, UserId: user_id })
     });
 }
 
@@ -92,13 +123,20 @@ function subscribeUser() {
   })
   .then(function(subscription) {
     console.log('User is subscribed.');
-    saveSubscriptionID(subscription);
+    
 
-    //updateSubscriptionOnServer(subscription);
+    if(saveSubscriptionID(subscription) == true){
 
-    isSubscribed = true;
+      //updateSubscriptionOnServer(subscription);
 
-    updateBtn();
+      isSubscribed = true;
+
+      updateBtn();
+    }else{
+      unsubscribeUser();
+    }
+
+    
   })
   .catch(function(err) {
     console.log('Failed to subscribe the user: ', err);
@@ -143,8 +181,11 @@ function initializeUI() {
 
     updateSubscriptionOnServer(subscription);
 
+    
+
     if (isSubscribed) {
       console.log('User IS subscribed.');
+      getNameFromSubscriptionID(subscription);
     } else {
       console.log('User is NOT subscribed.');
     }
