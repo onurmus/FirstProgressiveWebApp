@@ -1,6 +1,6 @@
 'use strict';
 
-var host = "https://arnotificationsender20180418102257.azurewebsites.net"; //"http://localhost:46678"; 
+var host = "http://localhost:46678"; // "https://arnotificationsender20180418102257.azurewebsites.net";
 
 function getNameFromSubscriptionID(subscription) {
     //var subscription_id = subscription.endpoint.split('gcm/send/')[1];
